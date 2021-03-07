@@ -11,9 +11,14 @@ class Game {
   placePiece(indexNumber) {
     if (this.playerTurn === 'one' && this.board[indexNumber] === 0) {
       this.board[indexNumber] = 1;
-      this.playerTurn = 'two';
     } else if (this.playerTurn === 'two' && this.board[indexNumber] === 0) {
       this.board[indexNumber] = 2;
+    }
+  }
+  nextTurn() {
+    if (this.playerTurn === 'one') {
+      this.playerTurn = 'two';
+    } else if (this.playerTurn === 'two') {
       this.playerTurn = 'one';
     }
   }
@@ -32,8 +37,25 @@ class Game {
       return true
     }
   }
+  checkForDraw() {
+    for (var i = 0; i < this.board.length; i++) {
+      if (this.board[i] === 0) {
+        return false;
+      }
+    } if (!this.checkForWinner()) {
+      return true;
+    }
+  }
   addWin(player) {
       player.wins += 1
+  }
+  resetBoard() {
+    this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+    if (this.playerTurn === 'one') {
+      this.playerTurn = 'two';
+    } else {
+      this.playerTurn = 'one';
+    }
   }
 }
 module.exports = Game
