@@ -35,6 +35,8 @@ class Game {
       (this.board[2] > 0 && this.board[2] === this.board[4] && this.board[4] === this.board[6]))
     if (winningMoves) {
       return true
+    } else {
+      return false
     }
   }
   checkForDraw() {
