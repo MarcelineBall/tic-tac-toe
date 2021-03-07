@@ -9,10 +9,10 @@ class Game {
     this.playerTurn = 'one';
   }
   placePiece(indexNumber) {
-    if (this.playerTurn === 'one') {
+    if (this.playerTurn === 'one' && this.board[indexNumber] === 0) {
       this.board[indexNumber] = 1;
       this.playerTurn = 'two';
-    } else if (this.playerTurn === 'two') {
+    } else if (this.playerTurn === 'two' && this.board[indexNumber] === 0) {
       this.board[indexNumber] = 2;
       this.playerTurn = 'one';
     }
@@ -31,6 +31,9 @@ class Game {
     if (winningMoves) {
       return true
     }
+  }
+  addWin(player) {
+      player.wins += 1
   }
 }
 module.exports = Game
