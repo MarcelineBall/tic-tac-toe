@@ -1,4 +1,4 @@
-var Player = require('./player.js');
+
 
 var player1 = new Player('one', '🌙')
 var player2 = new Player('two', '⭐️')
@@ -60,4 +60,3 @@ class Game {
     }
   }
 }
-module.exports = Game
