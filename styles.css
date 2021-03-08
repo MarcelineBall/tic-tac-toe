@@ -15,7 +15,12 @@ main {
   align-items: center;
 }
 
+button {
+  height: 200%;
+  width: 30%;
+}
+
 .game-board {
   display: flex;
-  
+  flex-wrap: wrap;
 }
