@@ -37,6 +37,7 @@ class Game {
       return false
     }
   }
+  
   checkForDraw() {
     for (var i = 0; i < this.board.length; i++) {
       if (this.board[i] === 0) {

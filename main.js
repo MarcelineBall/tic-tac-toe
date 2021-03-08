@@ -10,28 +10,32 @@ var player2WinDisplay = document.getElementById('player2WinDisplay');
 
 //EVENT LISTENERS
 gameBoard.addEventListener('click', function() {
-  if (event.target.id === 'topLeftButton') {
-    mainPhase(0);
-  } else if (event.target.id === 'topCenterButton') {
-    mainPhase(1);
-  } else if (event.target.id === 'topRightButton') {
-    mainPhase(2);
-  } else if (event.target.id === 'middleLeftButton') {
-    mainPhase(3);
-  } else if (event.target.id === 'middleCenterButton') {
-    mainPhase(4);
-  } else if (event.target.id === 'middleRightButton') {
-    mainPhase(5);
-  } else if (event.target.id === 'bottomLeftButton') {
-    mainPhase(6);
-  } else if (event.target.id === 'bottomCenterButton') {
-    mainPhase(7);
-  } else if (event.target.id === 'bottomRightButton') {
-    mainPhase(8);
-  }
+  determineButtonClicked(event.target.id)
 })
 
 //FUNCTIONS
+function determineButtonClicked(id) {
+  if (id === 'topLeftButton') {
+    mainPhase(0);
+  } else if (id === 'topCenterButton') {
+    mainPhase(1);
+  } else if (id === 'topRightButton') {
+    mainPhase(2);
+  } else if (id === 'middleLeftButton') {
+    mainPhase(3);
+  } else if (id === 'middleCenterButton') {
+    mainPhase(4);
+  } else if (id === 'middleRightButton') {
+    mainPhase(5);
+  } else if (id === 'bottomLeftButton') {
+    mainPhase(6);
+  } else if (id === 'bottomCenterButton') {
+    mainPhase(7);
+  } else if (id === 'bottomRightButton') {
+    mainPhase(8);
+  }
+}
+
 function updateBoardstate() {
   gameBoard.children[0].innerHTML = game1.board[0];
   gameBoard.children[1].innerHTML = game1.board[1];
@@ -74,16 +78,18 @@ function drawPhase() {
 }
 
 function mainPhase(indexNumber) {
-  game1.placePiece(indexNumber)
-  updateBoardstate();
-  if (game1.checkForWinner() && game1.playerTurn === 'one') {
-    winPhase(player1);
-  } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
-    winPhase(player2);
-  } else if (game1.checkForDraw()) {
-    drawPhase();
-  } else {
-    game1.nextTurn();
-    updateTurnDisplay();
+  if (game1.board[indexNumber] === 0) {
+    game1.placePiece(indexNumber)
+    updateBoardstate();
+    if (game1.checkForWinner() && game1.playerTurn === 'one') {
+      winPhase(player1);
+    } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
+      winPhase(player2);
+    } else if (game1.checkForDraw()) {
+      drawPhase();
+    } else {
+      game1.nextTurn();
+      updateTurnDisplay();
+    }
   }
 }
