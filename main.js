@@ -5,6 +5,16 @@ var player1 = new Player('one', '🌙')
 var player2 = new Player('two', '⭐️')
 var game1 = new Game
 
+//SECTION SELECT
+var gameBoard = document.getElementById('gameBoard')
+var mainText = document.getElementById('mainTextDisplay')
+var player1WinDisplay = document.getElementById('player1WinDisplay')
+var plater2WinDisplay = document.getElementById('plater2WinDisplay')
+
+//EVENT LISTENERS
+
+
+//FUNCTIONS
 function winPhase(player) {
   //congradulations message will display
   game1.addWin(player)
