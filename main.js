@@ -49,23 +49,32 @@ function updateWinCount() {
   player2WinDisplay.innerText = `${player2.wins} wins`;
 }
 
+function updateTurnDisplay() {
+  if (game1.playerTurn === 'one') {
+    mainText.innerText = `It's ${player1.token}'s turn`;
+  } else if (game1.playerTurn === 'two') {
+    mainText.innerText = `It's ${player2.token}'s turn`;
+  }
+}
+
 function winPhase(player) {
   //congradulations message will display
   game1.addWin(player)
   updateWinCount()
   game1.resetBoard();
   updateBoardstate();
+  updateTurnDisplay();
 }
 
 function drawPhase() {
   //draw message will display
   game1.resetBoard();
   updateBoardstate();
+  updateTurnDisplay();
 }
 
 function mainPhase(indexNumber) {
   game1.placePiece(indexNumber)
-  console.log(game1.board)
   updateBoardstate();
   if (game1.checkForWinner() && game1.playerTurn === 'one') {
     winPhase(player1);
@@ -75,5 +84,6 @@ function mainPhase(indexNumber) {
     drawPhase();
   } else {
     game1.nextTurn();
+    updateTurnDisplay();
   }
 }
