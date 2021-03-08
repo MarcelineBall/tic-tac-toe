@@ -5,4 +5,3 @@ class Player {
     this.wins = 0;
   }
 }
-module.exports = Player

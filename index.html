@@ -9,26 +9,29 @@
   </head>
   <body>
     <section class="player1">
-      <h2>Player 1 Icon</h2>
-      <h3>0 wins</h3>
+      <h2>🌙</h2>
+      <h3 id="player1WinDisplay">0 wins</h3>
     </section>
     <main>
-      <h1>It's Player 1 Icon's turn</h1>
-      <div class="game-board">
-        <button class="game-board-button" id="topLeftButton">button</button>
-        <button class="game-board-button" id="topCenterButton">button</button>
-        <button class="game-board-button" id="topRightButton">button</button>
-        <button class="game-board-button" id="middleLeftButton">button</button>
-        <button class="game-board-button" id="middleCenterButton">button</button>
-        <button class="game-board-button" id="middleRightButton">button</button>
-        <button class="game-board-button" id="bottomLeftButton">button</button>
-        <button class="game-board-button" id="bottomCenterButton">button</button>
-        <button class="game-board-button" id="bottomRightButton">button</button>
+      <h1 id="mainTextDisplay">It's 🌙's turn</h1>
+      <div class="game-board" id="gameBoard">
+        <button class="game-board-button" id="topLeftButton"></button>
+        <button class="game-board-button" id="topCenterButton"></button>
+        <button class="game-board-button" id="topRightButton"></button>
+        <button class="game-board-button" id="middleLeftButton"></button>
+        <button class="game-board-button" id="middleCenterButton"></button>
+        <button class="game-board-button" id="middleRightButton"></button>
+        <button class="game-board-button" id="bottomLeftButton"></button>
+        <button class="game-board-button" id="bottomCenterButton"></button>
+        <button class="game-board-button" id="bottomRightButton"></button>
       </div>
     </main>
     <section class="player2">
-      <h2>Player 2 Icon</h2>
-      <h3>0 wins</h3>
+      <h2>⭐️</h2>
+      <h3 id="player2WinDisplay">0 wins</h3>
     </section>
+    <script src="./player.js"></script>
+    <script src="./game.js"></script>
+    <script src="./main.js"></script>
   </body>
 </html>
