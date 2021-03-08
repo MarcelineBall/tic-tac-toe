@@ -1,5 +1,3 @@
-var player1 = new Player('one', '🌙')
-var player2 = new Player('two', '⭐️')
 var game1 = new Game
 
 //SECTION SELECT
@@ -12,6 +10,7 @@ var player2WinDisplay = document.getElementById('player2WinDisplay');
 gameBoard.addEventListener('click', function() {
   determineButtonClicked(event.target.id)
 })
+window.addEventListener('load', updateBoardstate)
 
 //FUNCTIONS
 function determineButtonClicked(id) {
@@ -61,8 +60,16 @@ function updateTurnDisplay() {
   }
 }
 
+function displayWinner(player) {
+  mainText.innerText = `${player.token} won!`;
+}
+
+function displayDrawMessage() {
+  mainText.innerText = 'It\'s a draw!'
+}
+
 function winPhase(player) {
-  //congradulations message will display
+  displayWinner(player)
   game1.addWin(player)
   updateWinCount()
   game1.resetBoard();
@@ -71,7 +78,7 @@ function winPhase(player) {
 }
 
 function drawPhase() {
-  //draw message will display
+  displayDrawMessage()
   game1.resetBoard();
   updateBoardstate();
   updateTurnDisplay();
