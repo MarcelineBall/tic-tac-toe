@@ -9,7 +9,7 @@ var gameBoard = document.getElementById('gameBoard');
 var mainText = document.getElementById('mainTextDisplay');
 var player1WinDisplay = document.getElementById('player1WinDisplay');
 var player2WinDisplay = document.getElementById('plater2WinDisplay');
-var topLeftButton = document.getElementById('topLeftButton')
+
 //EVENT LISTENERS
 gameBoard.addEventListener('click', function() {
   if (event.target.id === 'topLeftButton') {
@@ -34,10 +34,17 @@ gameBoard.addEventListener('click', function() {
 })
 
 //FUNCTIONS
-function logSomething() {
-  console.log(event.target.id);
+function updateBoardstate() {
+  gameBoard.children[0].innerHTML = game1.board[0];
+  gameBoard.children[1].innerHTML = game1.board[1];
+  gameBoard.children[2].innerHTML = game1.board[2];
+  gameBoard.children[3].innerHTML = game1.board[3];
+  gameBoard.children[4].innerHTML = game1.board[4];
+  gameBoard.children[5].innerHTML = game1.board[5];
+  gameBoard.children[6].innerHTML = game1.board[6];
+  gameBoard.children[7].innerHTML = game1.board[7];
+  gameBoard.children[8].innerHTML = game1.board[8];
 }
-
 function winPhase(player) {
   //congradulations message will display
   game1.addWin(player)
@@ -52,6 +59,7 @@ function drawPhase() {
 function mainPhase(indexNumber) {
   game1.placePiece(indexNumber)
   console.log(game1.board)
+  updateBoardstate()
   if (game1.checkForWinner() && game1.playerTurn === 'one') {
     winPhase(player1)
   } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
