@@ -1,0 +1,21 @@
+section {
+  display: flex;
+  flex-direction: column;
+}
+
+body  {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-board {
+  display: flex;
+  
+}
