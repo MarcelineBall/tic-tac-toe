@@ -10,7 +10,7 @@ var player2WinDisplay = document.getElementById('player2WinDisplay');
 gameBoard.addEventListener('click', function() {
   determineButtonClicked(event.target.id)
 })
-window.addEventListener('load', updateBoardstate)
+window.addEventListener('load', manageLoadingFunctions)
 
 //FUNCTIONS
 function determineButtonClicked(id) {
@@ -33,6 +33,20 @@ function determineButtonClicked(id) {
   } else if (id === 'bottomRightButton') {
     mainPhase(8);
   }
+}
+
+function manageLoadingFunctions() {
+  pullWins();
+  updateBoardstate();
+}
+
+function pullWins() {
+  game1.pullWinsFromStorage();
+  updateWinCount();
+}
+
+function updateLocalStorage() {
+  game1.updateWinsToStorage()
 }
 
 function updateBoardstate() {
@@ -70,13 +84,13 @@ function displayDrawMessage() {
 
 function disableButtons() {
   for (var i = 0; i < gameBoard.children.length; i++) {
-    gameBoard.children[i].disabled = true
+    gameBoard.children[i].disabled = true;
   }
 }
 
 function enableButtons() {
   for (var i = 0; i < gameBoard.children.length; i++) {
-    gameBoard.children[i].disabled = false
+    gameBoard.children[i].disabled = false;
   }
 }
 
@@ -89,6 +103,7 @@ function winPhase(player) {
   displayWinner(player);
   game1.addWin(player);
   updateWinCount();
+  updateLocalStorage();
   delayBoardReset();
 }
 
@@ -113,7 +128,6 @@ function mainPhase(indexNumber) {
     } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
       winPhase(player2);
     } else if (game1.checkForDraw()) {
-      console.log('draw');
       drawPhase();
     } else {
       game1.nextTurn();
