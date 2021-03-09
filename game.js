@@ -56,10 +56,5 @@ class Game {
 
   resetBoard() {
     this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    if (this.playerTurn === 'one') {
-      this.playerTurn = 'two';
-    } else {
-      this.playerTurn = 'one';
-    }
   }
 }

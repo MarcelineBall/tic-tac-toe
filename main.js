@@ -111,6 +111,7 @@ function winPhase(player) {
 
 function resetGame() {
   game1.resetBoard();
+  game1.nextTurn();
   updateBoardstate();
   updateTurnDisplay();
   enableButtons();
