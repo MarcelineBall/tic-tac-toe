@@ -34,6 +34,7 @@ button {
   min-height:30%;
   border: none;
   flex-basis: 32%;
+  min-width: 32%;
   font-size: 5em;
   background-color: #8f8175;
   color: #8f8175;
