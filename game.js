@@ -21,7 +21,6 @@ class Game {
     }
   }
   checkForWinner() {
-    // 0,1,2 0,3,6 0,4,8 3,4,5 6,7,8 1,4,7 2,5,8 2,4,6
     var winningMoves = (
       (this.board[0] != 0 && this.board[0] === this.board[1] && this.board[1] === this.board[2]) ||
       (this.board[0] != 0 && this.board[0] === this.board[3] && this.board[3] === this.board[6]) ||
@@ -37,7 +36,7 @@ class Game {
       return false
     }
   }
-  
+
   checkForDraw() {
     for (var i = 0; i < this.board.length; i++) {
       if (this.board[i] === 0) {
@@ -48,7 +47,15 @@ class Game {
     }
   }
   addWin(player) {
-      player.wins += 1
+    player.wins += 1
+  }
+  updateWinsToStorage() {
+    localStorage.setItem('player1 wins', JSON.stringify(player1.wins))
+    localStorage.setItem('player2 wins', JSON.stringify(player2.wins))
+  }
+  pullWinsFromStorage() {
+    player1.wins = (JSON.parse(localStorage.getItem('player1 wins')) || 0)
+    player2.wins = (JSON.parse(localStorage.getItem('player2 wins')) || 0)
   }
   resetBoard() {
     this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
