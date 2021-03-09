@@ -7,8 +7,9 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: purple;
+  background-image:url('./night_sky.jpg');
   width: 30%;
+  color: #faf0d7;
 }
 
 body  {
@@ -25,6 +26,8 @@ main {
   flex-direction: column;
   align-items: center;
   width: 55%;
+  background-color: #8f8175;
+  color: #f3e0bb;
 }
 
 button {
@@ -32,8 +35,20 @@ button {
   border: none;
   flex-basis: 32%;
   font-size: 5em;
-  background-color: white;
-  color: white;
+  background-color: #8f8175;
+  color: #8f8175;
+}
+
+h1 {
+  font-size: 3.5em;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+h3 {
+  font-size: 2em;
 }
 
 .game-board {
@@ -42,8 +57,9 @@ button {
   justify-content: space-between;
   width: 90%;
   height: 70%;
-  background-color: black;
+  background-image: url('./night_sky.jpg');
 }
+
 .top-row-button {
   margin-bottom: 1%;
 }
