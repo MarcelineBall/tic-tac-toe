@@ -68,31 +68,52 @@ function displayDrawMessage() {
   mainText.innerText = 'It\'s a draw!'
 }
 
+function disableButtons() {
+  for (var i = 0; i < gameBoard.children.length; i++) {
+    gameBoard.children[i].disabled = true
+  }
+}
+
+function enableButtons() {
+  for (var i = 0; i < gameBoard.children.length; i++) {
+    gameBoard.children[i].disabled = false
+  }
+}
+
+function delayBoardReset() {
+  disableButtons()
+  window.setTimeout(resetGame, 2*1000);
+}
+
 function winPhase(player) {
-  displayWinner(player)
-  game1.addWin(player)
-  updateWinCount()
+  displayWinner(player);
+  game1.addWin(player);
+  updateWinCount();
+  delayBoardReset();
+}
+
+function resetGame() {
   game1.resetBoard();
   updateBoardstate();
   updateTurnDisplay();
+  enableButtons();
 }
 
 function drawPhase() {
-  displayDrawMessage()
-  game1.resetBoard();
-  updateBoardstate();
-  updateTurnDisplay();
+  displayDrawMessage();
+  delayBoardReset();
 }
 
 function mainPhase(indexNumber) {
   if (game1.board[indexNumber] === 0) {
-    game1.placePiece(indexNumber)
+    game1.placePiece(indexNumber);
     updateBoardstate();
     if (game1.checkForWinner() && game1.playerTurn === 'one') {
       winPhase(player1);
     } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
       winPhase(player2);
     } else if (game1.checkForDraw()) {
+      console.log('draw');
       drawPhase();
     } else {
       game1.nextTurn();
