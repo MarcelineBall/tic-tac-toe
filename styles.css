@@ -41,38 +41,18 @@ button {
   flex-wrap: wrap;
   justify-content: space-between;
   width: 90%;
-  height: 100%;
+  height: 70%;
   background-color: black;
 }
-
-#topLeftButton {
+.top-row-button {
   margin-bottom: 1%;
 }
 
-#topCenterButton {
-  margin-bottom: 1%;
-}
-#topRightButton {
-  margin-bottom: 1%;
-}
-#middleLeftButton {
+.middle-row-button {
   margin-bottom: 1%;
   margin-top: 1%;
 }
-#middleCenterButton {
-  margin-bottom: 1%;
-  margin-top: 1%;
-}
-#middleRightButton {
-  margin-bottom: 1%;
-  margin-top: 1%;
-}
-#bottomLeftButton {
-  margin-top: 1%;
-}
-#bottomCenterButton {
-  margin-top: 1%;
-}
-#bottomRightButton {
+
+.bottom-row-button {
   margin-top: 1%;
 }
