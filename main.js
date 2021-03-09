@@ -10,7 +10,7 @@ var player2WinDisplay = document.getElementById('player2WinDisplay');
 gameBoard.addEventListener('click', function() {
   determineButtonClicked(event.target.id)
 })
-window.addEventListener('load', pullWins)
+window.addEventListener('load', manageLoadingFunctions)
 
 //FUNCTIONS
 function determineButtonClicked(id) {
@@ -35,6 +35,11 @@ function determineButtonClicked(id) {
   }
 }
 
+function manageLoadingFunctions() {
+  pullWins();
+  updateBoardstate();
+}
+
 function pullWins() {
   game1.pullWinsFromStorage();
   updateWinCount();
@@ -42,7 +47,6 @@ function pullWins() {
 
 function updateLocalStorage() {
   game1.updateWinsToStorage()
-  console.log('wins to storage');
 }
 
 function updateBoardstate() {
