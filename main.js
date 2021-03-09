@@ -101,7 +101,7 @@ function delayBoardReset() {
   window.setTimeout(resetGame, 2 * 1000);
 }
 
-function winPhase(player) {
+function runWinningFunctions(player) {
   displayWinner(player);
   game1.addWin(player);
   updateWinCount();
@@ -117,7 +117,7 @@ function resetGame() {
   enableButtons();
 }
 
-function drawPhase() {
+function runDrawFunctions() {
   displayDrawMessage();
   delayBoardReset();
 }
@@ -127,11 +127,11 @@ function mainPhase(indexNumber) {
     game1.placePiece(indexNumber);
     updateBoardstate();
     if (game1.checkForWinner() && game1.playerTurn === 'one') {
-      winPhase(player1);
+      runWinningFunctions(player1);
     } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
-      winPhase(player2);
+      runWinningFunctions(player2);
     } else if (game1.checkForDraw()) {
-      drawPhase();
+      runDrawFunctions();
     } else {
       game1.nextTurn();
       updateTurnDisplay();
