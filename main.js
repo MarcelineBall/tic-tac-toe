@@ -68,20 +68,26 @@ function displayDrawMessage() {
   mainText.innerText = 'It\'s a draw!'
 }
 
+function delayBoardReset() {
+  window.setTimeout(resetGame, 2*1000);
+}
+
 function winPhase(player) {
   displayWinner(player)
   game1.addWin(player)
   updateWinCount()
+  delayBoardReset();
+}
+
+function resetGame() {
   game1.resetBoard();
   updateBoardstate();
   updateTurnDisplay();
 }
 
 function drawPhase() {
-  displayDrawMessage()
-  game1.resetBoard();
-  updateBoardstate();
-  updateTurnDisplay();
+  displayDrawMessage();
+  delayBoardReset();
 }
 
 function mainPhase(indexNumber) {
@@ -93,6 +99,7 @@ function mainPhase(indexNumber) {
     } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
       winPhase(player2);
     } else if (game1.checkForDraw()) {
+      console.log('draw');
       drawPhase();
     } else {
       game1.nextTurn();
