@@ -42,11 +42,13 @@ function manageLoadingFunctions() {
 
 function pullWins() {
   player1.retrieveWinsFromStorage();
+  player2.retrieveWinsFromStorage();
   updateWinCount();
 }
 
 function updateLocalStorage() {
   player1.saveWinsToStorage();
+  player2.saveWinsToStorage();
 }
 
 function updateBoardstate() {
@@ -96,7 +98,7 @@ function enableButtons() {
 
 function delayBoardReset() {
   disableButtons()
-  window.setTimeout(resetGame, 2*1000);
+  window.setTimeout(resetGame, 2 * 1000);
 }
 
 function winPhase(player) {
