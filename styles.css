@@ -1,26 +1,78 @@
+html {
+  height: 100%;
+  width: 100%
+}
+
 section {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-color: purple;
+  width: 30%;
 }
 
 body  {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content:space-between;
+  height: 100%;
+  width: 100%;
+  margin: 0%;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 55%;
 }
 
 button {
-  height: 200%;
-  width: 30%;
+  min-height:30%;
+  border: none;
+  flex-basis: 32%;
+  font-size: 5em;
+  background-color: white;
+  color: white;
 }
 
 .game-board {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  height: 100%;
+  background-color: black;
+}
+
+#topLeftButton {
+  margin-bottom: 1%;
+}
+
+#topCenterButton {
+  margin-bottom: 1%;
+}
+#topRightButton {
+  margin-bottom: 1%;
+}
+#middleLeftButton {
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+#middleCenterButton {
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+#middleRightButton {
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+#bottomLeftButton {
+  margin-top: 1%;
+}
+#bottomCenterButton {
+  margin-top: 1%;
+}
+#bottomRightButton {
+  margin-top: 1%;
 }
