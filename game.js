@@ -49,14 +49,6 @@ class Game {
   addWin(player) {
     player.wins += 1
   }
-  updateWinsToStorage() {
-    localStorage.setItem('player1 wins', JSON.stringify(player1.wins))
-    localStorage.setItem('player2 wins', JSON.stringify(player2.wins))
-  }
-  pullWinsFromStorage() {
-    player1.wins = (JSON.parse(localStorage.getItem('player1 wins')) || 0)
-    player2.wins = (JSON.parse(localStorage.getItem('player2 wins')) || 0)
-  }
   resetBoard() {
     this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     if (this.playerTurn === 'one') {

@@ -41,12 +41,12 @@ function manageLoadingFunctions() {
 }
 
 function pullWins() {
-  game1.pullWinsFromStorage();
+  player1.retrieveWinsFromStorage();
   updateWinCount();
 }
 
 function updateLocalStorage() {
-  game1.updateWinsToStorage()
+  player1.saveWinsToStorage();
 }
 
 function updateBoardstate() {
