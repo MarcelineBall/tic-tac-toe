@@ -1,26 +1,74 @@
+html {
+  height: 100%;
+  width: 100%
+}
+
 section {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  background-image:url('./night_sky.jpg');
+  width: 30%;
+  color: #faf0d7;
 }
 
 body  {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content:space-between;
+  height: 100%;
+  width: 100%;
+  margin: 0%;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 55%;
+  background-color: #8f8175;
+  color: #f3e0bb;
 }
 
 button {
-  height: 200%;
-  width: 30%;
+  min-height:30%;
+  border: none;
+  flex-basis: 32%;
+  font-size: 5em;
+  background-color: #8f8175;
+  color: #8f8175;
+}
+
+h1 {
+  font-size: 3.5em;
+}
+
+h2 {
+  font-size: 3em;
+}
+
+h3 {
+  font-size: 2em;
 }
 
 .game-board {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
+  width: 90%;
+  height: 70%;
+  background-image: url('./night_sky.jpg');
+}
+
+.top-row-button {
+  margin-bottom: 1%;
+}
+
+.middle-row-button {
+  margin-bottom: 1%;
+  margin-top: 1%;
+}
+
+.bottom-row-button {
+  margin-top: 1%;
 }
