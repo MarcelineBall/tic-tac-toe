@@ -15,23 +15,23 @@ window.addEventListener('load', manageLoadingFunctions)
 //FUNCTIONS
 function determineButtonClicked(id) {
   if (id === 'topLeftButton') {
-    mainPhase(0);
+    placePlayerIcon(0);
   } else if (id === 'topCenterButton') {
-    mainPhase(1);
+    placePlayerIcon(1);
   } else if (id === 'topRightButton') {
-    mainPhase(2);
+    placePlayerIcon(2);
   } else if (id === 'middleLeftButton') {
-    mainPhase(3);
+    placePlayerIcon(3);
   } else if (id === 'middleCenterButton') {
-    mainPhase(4);
+    placePlayerIcon(4);
   } else if (id === 'middleRightButton') {
-    mainPhase(5);
+    placePlayerIcon(5);
   } else if (id === 'bottomLeftButton') {
-    mainPhase(6);
+    placePlayerIcon(6);
   } else if (id === 'bottomCenterButton') {
-    mainPhase(7);
+    placePlayerIcon(7);
   } else if (id === 'bottomRightButton') {
-    mainPhase(8);
+    placePlayerIcon(8);
   }
 }
 
@@ -122,19 +122,23 @@ function runDrawFunctions() {
   delayBoardReset();
 }
 
-function mainPhase(indexNumber) {
+function placePlayerIcon(indexNumber) {
   if (game1.board[indexNumber] === 0) {
     game1.placePiece(indexNumber);
     updateBoardstate();
-    if (game1.checkForWinner() && game1.playerTurn === 'one') {
-      runWinningFunctions(player1);
-    } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
-      runWinningFunctions(player2);
-    } else if (game1.checkForDraw()) {
-      runDrawFunctions();
-    } else {
-      game1.nextTurn();
-      updateTurnDisplay();
-    }
+    checkForEndState();
+  }
+}
+
+function checkForEndState() {
+  if (game1.checkForWinner() && game1.playerTurn === 'one') {
+    runWinningFunctions(player1);
+  } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
+    runWinningFunctions(player2);
+  } else if (game1.checkForDraw()) {
+    runDrawFunctions();
+  } else {
+    game1.nextTurn();
+    updateTurnDisplay();
   }
 }
