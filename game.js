@@ -6,6 +6,7 @@ class Game {
     this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
     this.playerTurn = 'one';
   }
+
   placePiece(indexNumber) {
     if (this.playerTurn === 'one' && this.board[indexNumber] === 0) {
       this.board[indexNumber] = '🌙';
@@ -13,6 +14,7 @@ class Game {
       this.board[indexNumber] = '⭐️';
     }
   }
+
   nextTurn() {
     if (this.playerTurn === 'one') {
       this.playerTurn = 'two';
@@ -20,16 +22,17 @@ class Game {
       this.playerTurn = 'one';
     }
   }
+
   checkForWinner() {
     var winningMoves = (
-      (this.board[0] != 0 && this.board[0] === this.board[1] && this.board[1] === this.board[2]) ||
-      (this.board[0] != 0 && this.board[0] === this.board[3] && this.board[3] === this.board[6]) ||
-      (this.board[0] != 0 && this.board[0] === this.board[4] && this.board[4] === this.board[8]) ||
-      (this.board[3] != 0 && this.board[3] === this.board[4] && this.board[4] === this.board[5]) ||
-      (this.board[6] != 0 && this.board[6] === this.board[7] && this.board[7] === this.board[8]) ||
-      (this.board[1] != 0 && this.board[1] === this.board[4] && this.board[4] === this.board[7]) ||
-      (this.board[2] != 0 && this.board[2] === this.board[5] && this.board[5] === this.board[8]) ||
-      (this.board[2] != 0 && this.board[2] === this.board[4] && this.board[4] === this.board[6]))
+      (this.board[0] !== 0 && this.board[0] === this.board[1] && this.board[1] === this.board[2]) ||
+      (this.board[0] !== 0 && this.board[0] === this.board[3] && this.board[3] === this.board[6]) ||
+      (this.board[0] !== 0 && this.board[0] === this.board[4] && this.board[4] === this.board[8]) ||
+      (this.board[3] !== 0 && this.board[3] === this.board[4] && this.board[4] === this.board[5]) ||
+      (this.board[6] !== 0 && this.board[6] === this.board[7] && this.board[7] === this.board[8]) ||
+      (this.board[1] !== 0 && this.board[1] === this.board[4] && this.board[4] === this.board[7]) ||
+      (this.board[2] !== 0 && this.board[2] === this.board[5] && this.board[5] === this.board[8]) ||
+      (this.board[2] !== 0 && this.board[2] === this.board[4] && this.board[4] === this.board[6]))
     if (winningMoves) {
       return true
     } else {
@@ -46,23 +49,12 @@ class Game {
       return true;
     }
   }
+
   addWin(player) {
     player.wins += 1
   }
-  updateWinsToStorage() {
-    localStorage.setItem('player1 wins', JSON.stringify(player1.wins))
-    localStorage.setItem('player2 wins', JSON.stringify(player2.wins))
-  }
-  pullWinsFromStorage() {
-    player1.wins = (JSON.parse(localStorage.getItem('player1 wins')) || 0)
-    player2.wins = (JSON.parse(localStorage.getItem('player2 wins')) || 0)
-  }
+
   resetBoard() {
     this.board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-    if (this.playerTurn === 'one') {
-      this.playerTurn = 'two';
-    } else {
-      this.playerTurn = 'one';
-    }
   }
 }

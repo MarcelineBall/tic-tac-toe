@@ -15,23 +15,23 @@ window.addEventListener('load', manageLoadingFunctions)
 //FUNCTIONS
 function determineButtonClicked(id) {
   if (id === 'topLeftButton') {
-    mainPhase(0);
+    placePlayerIcon(0);
   } else if (id === 'topCenterButton') {
-    mainPhase(1);
+    placePlayerIcon(1);
   } else if (id === 'topRightButton') {
-    mainPhase(2);
+    placePlayerIcon(2);
   } else if (id === 'middleLeftButton') {
-    mainPhase(3);
+    placePlayerIcon(3);
   } else if (id === 'middleCenterButton') {
-    mainPhase(4);
+    placePlayerIcon(4);
   } else if (id === 'middleRightButton') {
-    mainPhase(5);
+    placePlayerIcon(5);
   } else if (id === 'bottomLeftButton') {
-    mainPhase(6);
+    placePlayerIcon(6);
   } else if (id === 'bottomCenterButton') {
-    mainPhase(7);
+    placePlayerIcon(7);
   } else if (id === 'bottomRightButton') {
-    mainPhase(8);
+    placePlayerIcon(8);
   }
 }
 
@@ -41,12 +41,14 @@ function manageLoadingFunctions() {
 }
 
 function pullWins() {
-  game1.pullWinsFromStorage();
+  player1.retrieveWinsFromStorage();
+  player2.retrieveWinsFromStorage();
   updateWinCount();
 }
 
 function updateLocalStorage() {
-  game1.updateWinsToStorage()
+  player1.saveWinsToStorage();
+  player2.saveWinsToStorage();
 }
 
 function updateBoardstate() {
@@ -96,10 +98,10 @@ function enableButtons() {
 
 function delayBoardReset() {
   disableButtons()
-  window.setTimeout(resetGame, 2*1000);
+  window.setTimeout(resetGame, 2 * 1000);
 }
 
-function winPhase(player) {
+function runWinningFunctions(player) {
   displayWinner(player);
   game1.addWin(player);
   updateWinCount();
@@ -109,29 +111,34 @@ function winPhase(player) {
 
 function resetGame() {
   game1.resetBoard();
+  game1.nextTurn();
   updateBoardstate();
   updateTurnDisplay();
   enableButtons();
 }
 
-function drawPhase() {
+function runDrawFunctions() {
   displayDrawMessage();
   delayBoardReset();
 }
 
-function mainPhase(indexNumber) {
+function placePlayerIcon(indexNumber) {
   if (game1.board[indexNumber] === 0) {
     game1.placePiece(indexNumber);
     updateBoardstate();
-    if (game1.checkForWinner() && game1.playerTurn === 'one') {
-      winPhase(player1);
-    } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
-      winPhase(player2);
-    } else if (game1.checkForDraw()) {
-      drawPhase();
-    } else {
-      game1.nextTurn();
-      updateTurnDisplay();
-    }
+    checkForEndState();
+  }
+}
+
+function checkForEndState() {
+  if (game1.checkForWinner() && game1.playerTurn === 'one') {
+    runWinningFunctions(player1);
+  } else if (game1.checkForWinner() && game1.playerTurn === 'two') {
+    runWinningFunctions(player2);
+  } else if (game1.checkForDraw()) {
+    runDrawFunctions();
+  } else {
+    game1.nextTurn();
+    updateTurnDisplay();
   }
 }
