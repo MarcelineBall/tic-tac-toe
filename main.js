@@ -1,18 +1,15 @@
 var game1 = new Game
 
-//SECTION SELECT
 var gameBoard = document.getElementById('gameBoard');
 var mainText = document.getElementById('mainTextDisplay');
 var player1WinDisplay = document.getElementById('player1WinDisplay');
 var player2WinDisplay = document.getElementById('player2WinDisplay');
 
-//EVENT LISTENERS
 gameBoard.addEventListener('click', function() {
   determineButtonClicked(event.target.id)
 })
 window.addEventListener('load', manageLoadingFunctions)
 
-//FUNCTIONS
 function determineButtonClicked(id) {
   if (id === 'topLeftButton') {
     placePlayerIcon(0);
