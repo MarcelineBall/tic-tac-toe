@@ -49,15 +49,9 @@ function updateLocalStorage() {
 }
 
 function updateBoardstate() {
-  gameBoard.children[0].innerHTML = game1.board[0];
-  gameBoard.children[1].innerHTML = game1.board[1];
-  gameBoard.children[2].innerHTML = game1.board[2];
-  gameBoard.children[3].innerHTML = game1.board[3];
-  gameBoard.children[4].innerHTML = game1.board[4];
-  gameBoard.children[5].innerHTML = game1.board[5];
-  gameBoard.children[6].innerHTML = game1.board[6];
-  gameBoard.children[7].innerHTML = game1.board[7];
-  gameBoard.children[8].innerHTML = game1.board[8];
+  for (var i = 0; i < gameBoard.children.length; i++) {
+    gameBoard.children[i].innerHTML = game1.board[i];
+  }
 }
 
 function updateWinCount() {
