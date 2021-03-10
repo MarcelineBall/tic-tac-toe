@@ -3,15 +3,6 @@ html {
   width: 100%
 }
 
-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-image:url('./night_sky.jpg');
-  width: 30%;
-  color: #faf0d7;
-}
-
 body  {
   display: flex;
   flex-direction: row;
@@ -49,6 +40,15 @@ h2 {
 
 h3 {
   font-size: 2em;
+}
+
+.player {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image:url('./night_sky.jpg');
+  width: 30%;
+  color: #faf0d7;
 }
 
 .game-board {
